@@ -1,10 +1,11 @@
-#Skeleton Program code for the AQA A Level Paper 1 Summer 2024 examination
-#this code should be used in conjunction with the Preliminary Material
-#written by the AQA Programmer Team
-#developed in the Python 3.9.4 programming environment
+# Skeleton Program code for the AQA A Level Paper 1 Summer 2024 examination
+# this code should be used in conjunction with the Preliminary Material
+# written by the AQA Programmer Team
+# developed in the Python 3.9.4 programming environment
 
 import random
 import os
+
 
 def Main():
     Again = "y"
@@ -18,6 +19,7 @@ def Main():
         Score = MyPuzzle.AttemptPuzzle()
         print("Puzzle finished. Your score was: " + str(Score))
         Again = input("Do another puzzle? ").lower()
+
 
 class Puzzle():
     def __init__(self, *args):
@@ -56,7 +58,7 @@ class Puzzle():
         try:
             with open(Filename) as f:
                 NoOfSymbols = int(f.readline().rstrip())
-                for Count in range (1, NoOfSymbols + 1):
+                for Count in range(1, NoOfSymbols + 1):
                     self.__AllowedSymbols.append(f.readline().rstrip())
                 NoOfPatterns = int(f.readline().rstrip())
                 for Count in range(1, NoOfPatterns + 1):
@@ -64,7 +66,7 @@ class Puzzle():
                     P = Pattern(Items[0], Items[1])
                     self.__AllowedPatterns.append(P)
                 self.__GridSize = int(f.readline().rstrip())
-                for Count in range (1, self.__GridSize * self.__GridSize + 1):
+                for Count in range(1, self.__GridSize * self.__GridSize + 1):
                     Items = f.readline().rstrip().split(",")
                     if Items[0] == "@":
                         C = BlockedCell()
@@ -182,6 +184,7 @@ class Puzzle():
                 print("|")
                 print(self.__CreateHorizontalLine())
 
+
 class Pattern():
     def __init__(self, SymbolToUse, PatternString):
         self.__Symbol = SymbolToUse
@@ -199,7 +202,8 @@ class Pattern():
         return True
 
     def GetPatternSequence(self):
-      return self.__PatternSequence
+        return self.__PatternSequence
+
 
 class Cell():
     def __init__(self):
@@ -208,10 +212,10 @@ class Cell():
 
     def GetSymbol(self):
         if self.IsEmpty():
-          return "-"
+            return "-"
         else:
-          return self._Symbol
-    
+            return self._Symbol
+
     def IsEmpty(self):
         if len(self._Symbol) == 0:
             return True
@@ -233,6 +237,7 @@ class Cell():
     def UpdateCell(self):
         pass
 
+
 class BlockedCell(Cell):
     def __init__(self):
         super(BlockedCell, self).__init__()
@@ -240,6 +245,7 @@ class BlockedCell(Cell):
 
     def CheckSymbolAllowed(self, SymbolToCheck):
         return False
+
 
 if __name__ == "__main__":
     Main()
