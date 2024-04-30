@@ -7,8 +7,7 @@ To add a new pattern option for the puzzle as depicted in Figure 1, we will modi
 
 Here’s the plan:
 
-1. **Define a new Pattern object for this "C" shape.**
-2. **Modify the `CheckforMatchWithPattern` method in the `Puzzle` class to handle this new pattern.**
+1. **Define a new Pattern object for this "C" shape.** We will add this pattern to the `Puzzle` class's initialization logic for standard puzzles.
 
 Here's the code snippet for these modifications:
 
@@ -16,10 +15,10 @@ Here's the code snippet for these modifications:
 We will add the creation of this pattern in the `Puzzle` constructor for standard puzzles. The pattern sequence here is a string representing the symbol layout across the rows. We'll use "." to represent empty or irrelevant spaces, and "C" to indicate where the pattern's symbol needs to be placed. For simplicity, the sequence is:
 
 - Top row: "CCC"
-- Middle row: "C.."
+- Middle row: "C\*\*"
 - Bottom row: "CCC"
 
-This translates to a pattern sequence "CCC.CCCC." to account for spiral transitions from top to bottom rows through the middle:
+This translates to a pattern sequence "CCC\*CCCC\*" to account for spiral transitions from top to bottom rows through the middle:
 
 
 ### Step 2: Modify `CheckforMatchWithPattern` to include the new pattern
@@ -46,5 +45,4 @@ class Puzzle():
 ```
 
 # Screen Capture with the result:
-
 ![Task](task_01_result.png)
